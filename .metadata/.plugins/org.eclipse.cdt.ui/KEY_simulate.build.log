@@ -1,0 +1,26 @@
+15:48:34 **** Incremental Build of configuration Debug for project KEY_simulate ****
+make -j20 all 
+arm-none-eabi-gcc "../applications/key.c"
+arm-none-eabi-gcc "../applications/main.c"
+../applications/key.c: In function 'length':
+../applications/key.c:359:26: warning: 'sizeof' on array function parameter 'arr' will return size of 'uint16_t * {aka short unsigned int *}' [-Wsizeof-array-argument]
+     for(int i=0; i<sizeof(arr); i++)
+                          ^
+../applications/key.c:356:26: note: declared here
+ uint16_t length(uint16_t arr[])
+                          ^
+../applications/main.c:21:20: warning: 'lib_id' defined but not used [-Wunused-variable]
+ static rt_thread_t lib_id =RT_NULL;
+                    ^
+linking...
+arm-none-eabi-objcopy -O binary "rtthread.elf"  "rtthread.bin"
+arm-none-eabi-size --format=berkeley "rtthread.elf"
+   text	   data	    bss	    dec	    hex	filename
+  51940	   1632	   3316	  56888	   de38	rtthread.elf
+
+              Used Size(B)           Used Size(KB)
+Flash:          53572 B               52.32 KB
+RAM:             4948 B                4.83 KB
+
+15:48:34 Build Finished. 0 errors, 2 warnings. (took 527ms)
+

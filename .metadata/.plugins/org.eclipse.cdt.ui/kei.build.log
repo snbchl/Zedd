@@ -1,0 +1,27 @@
+11:11:49 **** Incremental Build of configuration Debug for project kei ****
+make -j20 all 
+arm-none-eabi-gcc "../applications/main.c"
+../applications/main.c: In function 'IN6':
+../applications/main.c:41:13: warning: variable 'level' set but not used [-Wunused-but-set-variable]
+     uint8_t level;
+             ^
+../applications/main.c: In function 'main':
+../applications/main.c:78:5: warning: implicit declaration of function 'SystemClock_Config' [-Wimplicit-function-declaration]
+     SystemClock_Config();
+     ^
+../applications/main.c: In function 'sweep':
+../applications/main.c:36:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+linking...
+arm-none-eabi-objcopy -O binary "rtthread.elf"  "rtthread.bin"
+arm-none-eabi-size --format=berkeley "rtthread.elf"
+   text	   data	    bss	    dec	    hex	filename
+  51164	   1808	   3320	  56292	   dbe4	rtthread.elf
+
+              Used Size(B)           Used Size(KB)
+Flash:          52972 B               51.73 KB
+RAM:             5128 B                5.01 KB
+
+11:11:50 Build Finished. 0 errors, 3 warnings. (took 534ms)
+
